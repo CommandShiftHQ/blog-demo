@@ -8,7 +8,7 @@ import PostEntry from './post-entry';
 import { PostType } from '../types/post.type';
 import { UserType } from '../types/user.type';
 
-const PostList = ({ posts, users }) => {
+const PostList = ({ posts, users, updatePost }) => {
     return posts.map(post => {
         const user = users.find(({ id }) => id === post.userId);
         return <PostEntry key={post.id} post={post} user={user} />;
@@ -18,6 +18,7 @@ const PostList = ({ posts, users }) => {
 PostList.propTypes = {
     posts: PropTypes.arrayOf(PostType).isRequired,
     users: PropTypes.arrayOf(UserType).isRequired,
+    updatePost: PropTypes.func.isRequired,
 };
 
 export default PostList;
