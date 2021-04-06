@@ -17,8 +17,8 @@ const PostEntry = ({ post, user }) => {
 };
 
 PostEntry.propTypes = {
-    post: PostType,
-    user: UserType,
+    post: PostType.isRequired,
+    user: UserType.isRequired,
 };
 
 export default PostEntry;

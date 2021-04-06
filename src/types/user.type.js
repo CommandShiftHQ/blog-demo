@@ -28,4 +28,4 @@ export const UserType = PropTypes.shape({
     phone: PropTypes.string,
     website: PropTypes.string,
     company: CompanyType,
-}).isRequired;
+});
