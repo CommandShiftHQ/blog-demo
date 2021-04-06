@@ -5,4 +5,5 @@ export const PostType = PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string,
     body: PropTypes.string,
+    liked: PropTypes.bool,
 });
