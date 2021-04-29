@@ -1,18 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import { StyledNavWrap, StyledNav, NavLink } from '../styles/GlobalStyles';
 
 const Navigation = () => {
     return (
-        <nav>
-            <ul>
-                <li>
-                    <Link to="/">Home</Link>
-                    <Link to="/create">Create</Link>
-                    <Link to="/about">About</Link>
-                    <Link to="/contact">Contact</Link>
+        <StyledNavWrap>
+            <StyledNav>
+                <li className="header__title">
+                    <NavLink to="/">Home</NavLink>
                 </li>
-            </ul>
-        </nav>
+                <li>
+                    <NavLink to="/create">Create</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/about">About</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/contact">Contact</NavLink>
+                </li>
+            </StyledNav>
+        </StyledNavWrap>
     );
 };
 export default Navigation;

@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { useEffect, useState } from 'react';
 import {
     BrowserRouter as Router,
@@ -22,6 +23,13 @@ import { ThemeConfig, ThemeContext } from './contexts/ThemeContext';
 // custom hooks
 import { useFetch } from './hooks/useFetch';
 
+// Styles
+import {
+    PageWrapper,
+    PageContainer,
+    PostListWrapper,
+} from './styles/GlobalStyles';
+
 // consts
 const API = process.env.REACT_APP_JSON_PLACEHOLDER_API;
 
@@ -37,37 +45,45 @@ const App = () => {
     }, [posts]);
 
     return (
-        <ThemeContext.Provider value={{ theme, setTheme }}>
-            <Router>
-                <Navigation />
-                <Switch>
-                    <Route exact path="/">
-                        <div style={ThemeConfig[theme]}>
-                            <Header />
-                            {posts?.length > 0 && users?.length > 0 ? (
-                                <PostList
-                                    posts={posts}
-                                    users={users}
-                                    removePost={removePost}
-                                />
-                            ) : (
-                                <div>Loading...</div>
-                            )}
-                        </div>
-                    </Route>
-                    <Route path="/create">
-                        <Create addPost={addPost} />
-                    </Route>
-                    <Route path="/about" component={About} />
-                    <Route path="/contact" component={Contact} />
-                    <Route path="/post/:id" component={PostEntry} />
-                    <Route exact path="/404" component={NotFound} />
-                    <Route>
-                        <Redirect to="/404" />
-                    </Route>
-                </Switch>
-            </Router>
-        </ThemeContext.Provider>
+        <PageWrapper>
+            <ThemeContext.Provider value={{ theme, setTheme }}>
+                <Router>
+                    <Navigation />
+                    <Switch>
+                        <Route exact path="/">
+                            <div style={ThemeConfig[theme]}>
+                                <PageContainer>
+                                    <Header />
+                                    <PostListWrapper>
+                                        {posts?.length > 0 &&
+                                        users?.length > 0 ? (
+                                            <PostList
+                                                posts={posts}
+                                                users={users}
+                                                removePost={removePost}
+                                                theme={theme}
+                                            />
+                                        ) : (
+                                            <div>Loading...</div>
+                                        )}
+                                    </PostListWrapper>
+                                </PageContainer>
+                            </div>
+                        </Route>
+                        <Route path="/create">
+                            <Create addPost={addPost} />
+                        </Route>
+                        <Route path="/about" component={About} />
+                        <Route path="/contact" component={Contact} />
+                        <Route path="/post/:id" component={PostEntry} />
+                        <Route exact path="/404" component={NotFound} />
+                        <Route>
+                            <Redirect to="/404" />
+                        </Route>
+                    </Switch>
+                </Router>
+            </ThemeContext.Provider>
+        </PageWrapper>
     );
 };
 
