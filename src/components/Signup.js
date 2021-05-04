@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 // custome hooks
 import { useForm } from '../hooks/useForm';
@@ -76,6 +76,9 @@ const Signup = () => {
                     Sign Up
                 </button>
             </form>
+            <div>
+                Already have an account? <Link to="/login">Log in</Link>
+            </div>
         </>
     );
 };
