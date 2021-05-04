@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 // custome hooks
 import { useForm } from '../hooks/useForm';
@@ -18,6 +19,7 @@ const Signup = () => {
     const [loading, setLoading] = useState(false);
 
     const { signup } = useAuth();
+    const history = useHistory();
 
     const handleSubmit = async event => {
         event.preventDefault();
@@ -29,6 +31,7 @@ const Signup = () => {
                 setError('');
                 setLoading(true);
                 await signup(email, password);
+                history.push('/');
             } catch (e) {
                 setError('Failed to create account');
             } finally {
