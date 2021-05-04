@@ -13,7 +13,7 @@ const Login = () => {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
-    const { login } = useAuth();
+    const { login, loginWithGoogle } = useAuth();
     const history = useHistory();
 
     const handleSubmit = async event => {
@@ -23,6 +23,21 @@ const Login = () => {
             setError('');
             setLoading(true);
             await login(email, password);
+            history.push('/');
+        } catch (e) {
+            setError('Failed to sign in');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleWithPopUp = async event => {
+        event.preventDefault();
+
+        try {
+            setError('');
+            setLoading(true);
+            await loginWithGoogle();
             history.push('/');
         } catch (e) {
             setError('Failed to sign in');
@@ -56,6 +71,9 @@ const Login = () => {
                 {error && <div>{error}</div>}
                 <button type="submit" disabled={loading}>
                     Log In
+                </button>
+                <button type="button" onClick={handleWithPopUp}>
+                    sign in with google
                 </button>
             </form>
         </>
