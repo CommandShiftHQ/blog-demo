@@ -16,9 +16,13 @@ import Contact from './components/Contact';
 import Create from './components/Create';
 import PostEntry from './components/PostEntry';
 import NotFound from './components/NotFound';
+import Signup from './components/Signup';
+import PrivateRoute from './components/PrivateRoute';
+import Login from './components/Login';
 
 // contexts
 import { ThemeConfig, ThemeContext } from './contexts/ThemeContext';
+import { AuthProvider } from './contexts/AuthContext';
 
 // custom hooks
 import { useFetch } from './hooks/useFetch';
@@ -46,43 +50,47 @@ const App = () => {
 
     return (
         <PageWrapper>
-            <ThemeContext.Provider value={{ theme, setTheme }}>
-                <Router>
-                    <Navigation />
-                    <Switch>
-                        <Route exact path="/">
-                            <div style={ThemeConfig[theme]}>
-                                <PageContainer>
-                                    <Header />
-                                    <PostListWrapper>
-                                        {posts?.length > 0 &&
-                                        users?.length > 0 ? (
-                                            <PostList
-                                                posts={posts}
-                                                users={users}
-                                                removePost={removePost}
-                                                theme={theme}
-                                            />
-                                        ) : (
-                                            <div>Loading...</div>
-                                        )}
-                                    </PostListWrapper>
-                                </PageContainer>
-                            </div>
-                        </Route>
-                        <Route path="/create">
-                            <Create addPost={addPost} />
-                        </Route>
-                        <Route path="/about" component={About} />
-                        <Route path="/contact" component={Contact} />
-                        <Route path="/post/:id" component={PostEntry} />
-                        <Route exact path="/404" component={NotFound} />
-                        <Route>
-                            <Redirect to="/404" />
-                        </Route>
-                    </Switch>
-                </Router>
-            </ThemeContext.Provider>
+            <AuthProvider>
+                <ThemeContext.Provider value={{ theme, setTheme }}>
+                    <Router>
+                        <Navigation />
+                        <Switch>
+                            <Route exact path="/">
+                                <div style={ThemeConfig[theme]}>
+                                    <PageContainer>
+                                        <Header />
+                                        <PostListWrapper>
+                                            {posts?.length > 0 &&
+                                            users?.length > 0 ? (
+                                                <PostList
+                                                    posts={posts}
+                                                    users={users}
+                                                    removePost={removePost}
+                                                    theme={theme}
+                                                />
+                                            ) : (
+                                                <div>Loading...</div>
+                                            )}
+                                        </PostListWrapper>
+                                    </PageContainer>
+                                </div>
+                            </Route>
+                            <PrivateRoute path="/create">
+                                <Create addPost={addPost} />
+                            </PrivateRoute>
+                            <Route path="/about" component={About} />
+                            <Route path="/contact" component={Contact} />
+                            <Route path="/post/:id" component={PostEntry} />
+                            <Route path="/signup" component={Signup} />
+                            <Route path="/login" component={Login} />
+                            <Route exact path="/404" component={NotFound} />
+                            <Route>
+                                <Redirect to="/404" />
+                            </Route>
+                        </Switch>
+                    </Router>
+                </ThemeContext.Provider>
+            </AuthProvider>
         </PageWrapper>
     );
 };
