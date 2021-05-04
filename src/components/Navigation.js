@@ -1,17 +1,22 @@
 import React from 'react';
+import { useAuth } from '../contexts/AuthContext';
 
 import { StyledNavWrap, StyledNav, NavLink } from '../styles/GlobalStyles';
 
 const Navigation = () => {
+    const { currentUser } = useAuth();
+
     return (
         <StyledNavWrap>
             <StyledNav>
                 <li>
                     <NavLink to="/">Home</NavLink>
                 </li>
-                <li>
-                    <NavLink to="/create">Create</NavLink>
-                </li>
+                {currentUser && (
+                    <li>
+                        <NavLink to="/create">Create</NavLink>
+                    </li>
+                )}
                 <li>
                     <NavLink to="/about">About</NavLink>
                 </li>
@@ -19,11 +24,13 @@ const Navigation = () => {
                     <NavLink to="/contact">Contact</NavLink>
                 </li>
             </StyledNav>
-            <StyledNav>
-                <li>
-                    <NavLink to="/signup">Singup</NavLink>
-                </li>
-            </StyledNav>
+            {!currentUser && (
+                <StyledNav>
+                    <li>
+                        <NavLink to="/signup">Singup</NavLink>
+                    </li>
+                </StyledNav>
+            )}
         </StyledNavWrap>
     );
 };
