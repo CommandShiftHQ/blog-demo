@@ -18,6 +18,7 @@ import PostEntry from './components/PostEntry';
 import NotFound from './components/NotFound';
 import Signup from './components/Signup';
 import PrivateRoute from './components/PrivateRoute';
+import Login from './components/Login';
 
 // contexts
 import { ThemeConfig, ThemeContext } from './contexts/ThemeContext';
@@ -81,6 +82,7 @@ const App = () => {
                             <Route path="/contact" component={Contact} />
                             <Route path="/post/:id" component={PostEntry} />
                             <Route path="/signup" component={Signup} />
+                            <Route path="/login" component={Login} />
                             <Route exact path="/404" component={NotFound} />
                             <Route>
                                 <Redirect to="/404" />

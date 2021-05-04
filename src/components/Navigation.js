@@ -34,9 +34,14 @@ const Navigation = () => {
             </StyledNav>
             <StyledNav>
                 {!currentUser && (
-                    <li>
-                        <NavLink to="/signup">Singup</NavLink>
-                    </li>
+                    <>
+                        <li>
+                            <NavLink to="/signup">Singup</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/login">Log in</NavLink>
+                        </li>
+                    </>
                 )}
                 {currentUser && (
                     <li>
