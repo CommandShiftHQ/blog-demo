@@ -19,6 +19,7 @@ import NotFound from './components/NotFound';
 
 // contexts
 import { ThemeConfig, ThemeContext } from './contexts/ThemeContext';
+import { AuthProvider } from './contexts/AuthContext';
 
 // custom hooks
 import { useFetch } from './hooks/useFetch';
@@ -46,6 +47,7 @@ const App = () => {
 
     return (
         <PageWrapper>
+            <AuthProvider>
             <ThemeContext.Provider value={{ theme, setTheme }}>
                 <Router>
                     <Navigation />
@@ -83,6 +85,7 @@ const App = () => {
                     </Switch>
                 </Router>
             </ThemeContext.Provider>
+            </AuthProvider>
         </PageWrapper>
     );
 };
