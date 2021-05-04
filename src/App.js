@@ -16,6 +16,7 @@ import Contact from './components/Contact';
 import Create from './components/Create';
 import PostEntry from './components/PostEntry';
 import NotFound from './components/NotFound';
+import Signup from './components/Signup';
 
 // contexts
 import { ThemeConfig, ThemeContext } from './contexts/ThemeContext';
@@ -48,43 +49,44 @@ const App = () => {
     return (
         <PageWrapper>
             <AuthProvider>
-            <ThemeContext.Provider value={{ theme, setTheme }}>
-                <Router>
-                    <Navigation />
-                    <Switch>
-                        <Route exact path="/">
-                            <div style={ThemeConfig[theme]}>
-                                <PageContainer>
-                                    <Header />
-                                    <PostListWrapper>
-                                        {posts?.length > 0 &&
-                                        users?.length > 0 ? (
-                                            <PostList
-                                                posts={posts}
-                                                users={users}
-                                                removePost={removePost}
-                                                theme={theme}
-                                            />
-                                        ) : (
-                                            <div>Loading...</div>
-                                        )}
-                                    </PostListWrapper>
-                                </PageContainer>
-                            </div>
-                        </Route>
-                        <Route path="/create">
-                            <Create addPost={addPost} />
-                        </Route>
-                        <Route path="/about" component={About} />
-                        <Route path="/contact" component={Contact} />
-                        <Route path="/post/:id" component={PostEntry} />
-                        <Route exact path="/404" component={NotFound} />
-                        <Route>
-                            <Redirect to="/404" />
-                        </Route>
-                    </Switch>
-                </Router>
-            </ThemeContext.Provider>
+                <ThemeContext.Provider value={{ theme, setTheme }}>
+                    <Router>
+                        <Navigation />
+                        <Switch>
+                            <Route exact path="/">
+                                <div style={ThemeConfig[theme]}>
+                                    <PageContainer>
+                                        <Header />
+                                        <PostListWrapper>
+                                            {posts?.length > 0 &&
+                                            users?.length > 0 ? (
+                                                <PostList
+                                                    posts={posts}
+                                                    users={users}
+                                                    removePost={removePost}
+                                                    theme={theme}
+                                                />
+                                            ) : (
+                                                <div>Loading...</div>
+                                            )}
+                                        </PostListWrapper>
+                                    </PageContainer>
+                                </div>
+                            </Route>
+                            <Route path="/create">
+                                <Create addPost={addPost} />
+                            </Route>
+                            <Route path="/about" component={About} />
+                            <Route path="/contact" component={Contact} />
+                            <Route path="/post/:id" component={PostEntry} />
+                            <Route path="/signup" component={Signup} />
+                            <Route exact path="/404" component={NotFound} />
+                            <Route>
+                                <Redirect to="/404" />
+                            </Route>
+                        </Switch>
+                    </Router>
+                </ThemeContext.Provider>
             </AuthProvider>
         </PageWrapper>
     );

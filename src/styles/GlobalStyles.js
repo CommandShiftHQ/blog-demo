@@ -77,7 +77,7 @@ export const StyledButtonSmall = Styled.button`
 export const StyledNavWrap = Styled.nav`
     height: 4rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     background-color: ${ColourPalette.green};
 `;
@@ -144,4 +144,10 @@ export const PostListWrapper = Styled.div`
     .post-entry:nth-child(odd) {
         border: 2px solid ${ColourPalette.blue};
     }
+`;
+
+export const StyledInput = Styled.input`
+    padding: 5px;
+    border: 1px solid grey;
+    margin: 5px;
 `;

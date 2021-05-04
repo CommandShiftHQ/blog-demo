@@ -6,7 +6,7 @@ const Navigation = () => {
     return (
         <StyledNavWrap>
             <StyledNav>
-                <li className="header__title">
+                <li>
                     <NavLink to="/">Home</NavLink>
                 </li>
                 <li>
@@ -17,6 +17,11 @@ const Navigation = () => {
                 </li>
                 <li>
                     <NavLink to="/contact">Contact</NavLink>
+                </li>
+            </StyledNav>
+            <StyledNav>
+                <li>
+                    <NavLink to="/signup">Singup</NavLink>
                 </li>
             </StyledNav>
         </StyledNavWrap>
