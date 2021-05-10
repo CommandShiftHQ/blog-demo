@@ -1,6 +1,12 @@
-# Getting Started with Create React App
+# React Exercise for FE module at Manchester codes
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The list of goals for this exercise is:
+
+- demonstrate how to create simple functional components,
+- show practical examples of React Hooks application
+- implementation of custom hooks
+- implementation of styled components.
 
 ## Available Scripts
 
