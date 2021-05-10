@@ -7,7 +7,7 @@ The list of goals for this exercise is:
 - show practical examples of React Hooks application
 - implementation of custom hooks
 - implementation of styled components.
-
+- proper use of state including props
 ## Available Scripts
 
 In the project directory, you can run:
