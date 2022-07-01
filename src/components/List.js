@@ -5,15 +5,15 @@ const List = ({languages, setTotal}) => {
     return (
         <div className="container">
             {languages.map((language, index) => {
-                console.log(language)
-                return <Card language={language} setTotal={setTotal} index={index}/>
+                return <Card language={language} setTotal={setTotal}/>
             })}
         </div>
     )
 }
 
-List.propTypes = {
-    languages: PropTypes.arrayOf(PropTypes.string)
-}
-
 export default List
+
+List.propTypes = {
+    languages: PropTypes.arrayOf(PropTypes.string),
+    setTotal: PropTypes.func
+}
